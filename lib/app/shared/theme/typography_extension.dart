@@ -1,7 +1,7 @@
+import 'package:dev_metrics/app/shared/presentation/typography/responsive_text.dart';
+import 'package:dev_metrics/app/shared/theme/app_theme.dart';
+import 'package:dev_metrics/app/shared/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/app/shared/presentation/typography/responsive_text.dart';
-import 'package:flutter_boilerplate/app/shared/theme/app_theme.dart';
-import 'package:flutter_boilerplate/app/shared/theme/theme_provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 

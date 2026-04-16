@@ -1,5 +1,5 @@
-name: flutter_boilerplate
-description: "Flutter Boilerplate"
+name: dev_metrics
+description: "Dev Metrics Flutter"
 publish_to: "none"
 version: 1.0.0+2
 
@@ -45,5 +45,5 @@ flutter:
 sentry:
   upload_debug_symbols: true
   upload_source_maps: true
-  project: flutter_boilerplate
+  project: flutter_dev_metrics
   org: victorzarzar

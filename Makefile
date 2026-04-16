@@ -1,5 +1,5 @@
-# Makefile Flutter Boilerplate
-PROJECT_NAME = Flutter Boilerplate
+# Makefile Dev Metrics
+PROJECT_NAME = Dev Metrics
 VERSION_TAG = $(shell grep '^version:' pubspec.yaml | awk '{print $$2}')
 
 install:

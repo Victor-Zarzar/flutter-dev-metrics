@@ -1,11 +1,11 @@
-import 'package:flutter_boilerplate/app/features/dashboard/presentation/pages/dashboard_page.dart';
-import 'package:flutter_boilerplate/app/features/home/presentation/pages/home_page.dart';
-import 'package:flutter_boilerplate/app/features/settings/presentation/pages/settings_page.dart';
-import 'package:flutter_boilerplate/app/layout/desktop_layout.dart';
-import 'package:flutter_boilerplate/app/layout/mobile_layout.dart';
-import 'package:flutter_boilerplate/app/routes/app_route.dart';
+import 'package:dev_metrics/app/features/dashboard/presentation/pages/dashboard_page.dart';
+import 'package:dev_metrics/app/features/home/presentation/pages/home_page.dart';
+import 'package:dev_metrics/app/features/settings/presentation/pages/settings_page.dart';
+import 'package:dev_metrics/app/layout/desktop_layout.dart';
+import 'package:dev_metrics/app/layout/mobile_layout.dart';
+import 'package:dev_metrics/app/routes/app_route.dart';
+import 'package:dev_metrics/app/shared/widgets/responsive.dart';
 import 'package:go_router/go_router.dart';
-import 'package:flutter_boilerplate/app/shared/widgets/responsive.dart';
 
 class AppRouter {
   AppRouter._();

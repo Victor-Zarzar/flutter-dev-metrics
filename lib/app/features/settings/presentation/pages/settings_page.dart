@@ -1,14 +1,14 @@
+import 'package:dev_metrics/app/features/about/presentation/pages/about_page.dart';
+import 'package:dev_metrics/app/features/settings/presentation/pages/theme_page.dart';
+import 'package:dev_metrics/app/presentation/viewmodels/locale_viewmodel.dart';
+import 'package:dev_metrics/app/presentation/viewmodels/notification_viewmodel.dart';
+import 'package:dev_metrics/app/shared/assets/locale_flag.dart';
+import 'package:dev_metrics/app/shared/theme/app_theme.dart';
+import 'package:dev_metrics/app/shared/theme/theme_provider.dart';
+import 'package:dev_metrics/app/shared/theme/typography_extension.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/app/features/about/presentation/pages/about_page.dart';
-import 'package:flutter_boilerplate/app/features/settings/presentation/pages/theme_page.dart';
-import 'package:flutter_boilerplate/app/presentation/viewmodels/locale_viewmodel.dart';
-import 'package:flutter_boilerplate/app/presentation/viewmodels/notification_viewmodel.dart';
-import 'package:flutter_boilerplate/app/shared/assets/locale_flag.dart';
-import 'package:flutter_boilerplate/app/shared/theme/app_theme.dart';
-import 'package:flutter_boilerplate/app/shared/theme/theme_provider.dart';
-import 'package:flutter_boilerplate/app/shared/theme/typography_extension.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
