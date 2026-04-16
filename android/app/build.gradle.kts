@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.flutter_boilerplate"
+    namespace = "com.example.flutter_dev_metrics"
     compileSdk = 36
 
     compileOptions {
@@ -19,7 +19,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.flutter_boilerplate"
+        applicationId = "com.example.flutter_dev_metrics"
         minSdk = 24
         targetSdk = 36
         versionCode = 1

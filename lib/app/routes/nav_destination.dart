@@ -1,5 +1,5 @@
+import 'package:dev_metrics/app/routes/app_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/app/routes/app_route.dart';
 
 class NavDestination {
   const NavDestination({

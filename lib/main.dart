@@ -1,15 +1,14 @@
+import 'package:dev_metrics/app/presentation/viewmodels/locale_viewmodel.dart';
+import 'package:dev_metrics/app/presentation/viewmodels/notification_viewmodel.dart';
+import 'package:dev_metrics/app/shared/services/notification_service.dart';
+import 'package:dev_metrics/app/shared/services/sentry_service.dart';
+import 'package:dev_metrics/app/shared/theme/theme_provider.dart';
+import 'package:dev_metrics/app_widget.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-import 'package:flutter_boilerplate/app/presentation/viewmodels/locale_viewmodel.dart';
-import 'package:flutter_boilerplate/app/presentation/viewmodels/notification_viewmodel.dart';
-import 'package:flutter_boilerplate/app/shared/services/sentry_service.dart';
-import 'package:flutter_boilerplate/app/shared/theme/theme_provider.dart';
-import 'package:flutter_boilerplate/app_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:timezone/data/latest_10y.dart' as tz;
-import 'package:flutter_boilerplate/app/shared/services/notification_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
