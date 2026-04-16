@@ -9,25 +9,40 @@ clean:
 	rm -rf build/ .dart_tool/ .flutter-plugins .flutter-plugins-dependencies 2>/dev/null || true
 	flutter clean && flutter pub cache clean
 
+run-ios:
+	flutter run -d "iPhone 17" \
+	    --dart-define=SUPABASE_URL=$(SUPABASE_URL) \
+	    --dart-define=SUPABASE_ANON_KEY=$(SUPABASE_ANON_KEY) \
+		--dart-define=SENTRY_DSN=$(SENTRY_DSN) \
+		--dart-define=SENTRY_ENV=${SENTRY_ENV} \
+
 build-web-prod:
 	flutter build web --release \
+        --dart-define=SUPABASE_URL=$(SUPABASE_URL) \
+        --dart-define=SUPABASE_ANON_KEY=$(SUPABASE_ANON_KEY) \
 		--dart-define=SENTRY_DSN=$(SENTRY_DSN) \
 		--dart-define=SENTRY_ENV=${SENTRY_ENV} \
 
 build-apk-release:
 	flutter build apk --release \
+	    --dart-define=SUPABASE_URL=$(SUPABASE_URL) \
+	    --dart-define=SUPABASE_ANON_KEY=$(SUPABASE_ANON_KEY) \
 	    --dart-define=SENTRY_DSN=$(SENTRY_DSN) \
 		--dart-define=SENTRY_ENV=${SENTRY_ENV} \
 		--obfuscate --split-debug-info=build/debug-info
 
 build-appbundle-release:
 	flutter build appbundle --release \
+	    --dart-define=SUPABASE_URL=$(SUPABASE_URL) \
+	    --dart-define=SUPABASE_ANON_KEY=$(SUPABASE_ANON_KEY) \
 	    --dart-define=SENTRY_DSN=$(SENTRY_DSN) \
 		--dart-define=SENTRY_ENV=${SENTRY_ENV} \
 		--obfuscate --split-debug-info=build/debug-info
 
 build-ios-release:
 	flutter build ios --release \
+	    --dart-define=SUPABASE_URL=$(SUPABASE_URL) \
+	    --dart-define=SUPABASE_ANON_KEY=$(SUPABASE_ANON_KEY) \
 	    --dart-define=SENTRY_DSN=$(SENTRY_DSN) \
 		--dart-define=SENTRY_ENV=${SENTRY_ENV} \
 		--obfuscate --split-debug-info=build/debug-info

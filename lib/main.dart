@@ -1,5 +1,7 @@
+import 'package:dev_metrics/app/presentation/viewmodels/auth_viewmodel.dart';
 import 'package:dev_metrics/app/presentation/viewmodels/locale_viewmodel.dart';
 import 'package:dev_metrics/app/presentation/viewmodels/notification_viewmodel.dart';
+import 'package:dev_metrics/app/shared/constants/constants.dart';
 import 'package:dev_metrics/app/shared/services/notification_service.dart';
 import 'package:dev_metrics/app/shared/services/sentry_service.dart';
 import 'package:dev_metrics/app/shared/theme/theme_provider.dart';
@@ -8,11 +10,17 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:timezone/data/latest_10y.dart' as tz;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+
+  await Supabase.initialize(
+    url: Constants.supabaseUrl,
+    anonKey: Constants.supabaseAnonKey,
+  );
 
   if (!kIsWeb) {
     await NotificationService.init();
@@ -52,6 +60,7 @@ Future<void> main() async {
           ChangeNotifierProvider<UiProvider>(
             create: (_) => UiProvider()..init(),
           ),
+          ChangeNotifierProvider<AuthViewModel>(create: (_) => AuthViewModel()),
         ],
         child: const AppWidget(),
       ),
