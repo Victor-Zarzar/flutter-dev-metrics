@@ -1,7 +1,7 @@
 name: dev_metrics
 description: "Dev Metrics Flutter"
 publish_to: "none"
-version: 1.0.0+2
+version: 1.0.0+3
 
 environment:
   sdk: ^3.11.0
