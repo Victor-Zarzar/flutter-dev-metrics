@@ -1,17 +1,19 @@
 <h1 align="center" id="header">
-  flutter_boilerplate - Flutter Multi-Platform Boilerplate
+  Dev Metrics - Flutter Multi-Platform Developer Analytics
 </h1>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white" alt="Dart">
   <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter">
+  <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase">
+  <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL">
   <img src="https://img.shields.io/badge/Material_Design_3-757575?style=for-the-badge&logo=material-design&logoColor=white" alt="Material Design 3">
   <img src="https://img.shields.io/badge/MVVM-Architecture-blueviolet?style=for-the-badge" alt="MVVM">
   <img src="https://img.shields.io/badge/Provider-State_Management-orange?style=for-the-badge" alt="Provider">
 </p>
 
 <p align="center">
-  A basic multi-platform Flutter boilerplate for mobile and web. Built with MVVM architecture, featuring i18n, Dark Mode, GoRouter, Notifications, Provider, Responsive layout, Sentry, Google Fonts, and Material Design 3.
+  A multi-platform Flutter app for tracking and visualizing developer productivity metrics. Built with MVVM architecture, Supabase (PostgreSQL + Auth), FL Chart, PDF export, i18n, Dark Mode, GoRouter, Provider, Responsive Layout, Sentry, Google Fonts, and Material Design 3.
 </p>
 
 ---
@@ -21,6 +23,8 @@
 <p>
   <img src="https://github.com/tandpfun/skill-icons/blob/main/icons/Dart-Dark.svg" width="48" title="Dart">
   <img src="https://github.com/tandpfun/skill-icons/blob/main/icons/Flutter-Dark.svg" width="48" title="Flutter">
+  <img src="https://github.com/tandpfun/skill-icons/blob/main/icons/Supabase-Dark.svg" width="48" title="Supabase">
+  <img src="https://github.com/tandpfun/skill-icons/blob/main/icons/PostgreSQL-Dark.svg" width="48" title="PostgreSQL">
   <img src="https://github.com/tandpfun/skill-icons/blob/main/icons/AndroidStudio-Dark.svg" width="48" title="Android Studio">
   <img src="https://github.com/tandpfun/skill-icons/blob/main/icons/Sentry.svg" width="48" title="Sentry">
   <img src="https://github.com/tandpfun/skill-icons/blob/main/icons/Figma-Dark.svg" width="48" title="Figma">
@@ -34,9 +38,19 @@
 - **MVVM** - Architecture pattern (Model - View - ViewModel)
 - **Provider** - State management solution
 
+### Backend & Data
+
+- **Supabase** - Backend-as-a-Service (BaaS)
+- **PostgreSQL** - Relational database via Supabase
+- **Supabase Auth** - Authentication (email/password, OAuth, magic link)
+- **Supabase Realtime** - Live data sync across devices
+
 ### Features & Integrations
 
 - **Multi-Platform Support** - Android, iOS, Web
+- **FL Chart** - Rich, animated charts and graphs for metrics visualization
+- **PDF Export** - Generate and download metric reports as PDF
+- **Printing** - Print reports and dashboards directly from the app
 - **Google Fonts** - Beautiful typography
 - **i18n** - Multi-language support (EN / PT-BR / ES)
 - **Dark Mode Provider** - Theme switching
@@ -53,6 +67,7 @@ Before starting, ensure you have the following installed:
 
 - [FVM (Flutter Version Management)](https://fvm.app/documentation/getting-started/installation) - Required for managing Flutter versions
 - [Git](https://git-scm.com/)
+- [Supabase Account](https://supabase.com/) - For backend, database, and auth
 - [Xcode](https://developer.apple.com/xcode/) (for iOS development on macOS)
 - [Android Studio](https://developer.android.com/studio) (for Android development)
 
@@ -64,12 +79,11 @@ Before starting, ensure you have the following installed:
 
 <h2 id="installation">Installation & Setup</h2>
 
-### 1. Clone the Repository (Template)
+### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/Victor-Zarzar/flutter_boilerplate.git my_app
-cd my_app
-flutter pub get
+git clone https://github.com/Victor-Zarzar/flutter-dev-metrics
+cd flutter-dev-metrics
 ```
 
 ### 2. Open in your editor (example: Zed Editor)
@@ -81,37 +95,81 @@ zed .
 ### 3. Install Dependencies
 
 ```bash
-flutter pub get
+make install
+```
+
+### 4. Configure Supabase
+
+Create a `.env` file (or configure via your preferred secret management):
+
+```env
+SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_ANON_KEY=your-anon-key
+SENTRY_DSN=your-sentry-dsn
+SENTRY_ENV=development
+```
+
+Then initialize Supabase in your app entry point:
+
+```dart
+import 'package:dev_metrics/app/shared/constants/constants.dart';
+
+await Supabase.initialize(
+  url: Constants.supabaseUrl,
+  anonKey: Constants.supabaseAnonKey,
+);
+```
+
+### 5. Run Database Migrations
+
+Apply the provided SQL migrations to your Supabase project via the Supabase dashboard or CLI:
+
+```bash
+supabase db push
 ```
 
 ---
 
 <h2 id="usage">Usage</h2>
 
-### Local Development
+This project includes a `Makefile` for common tasks. Run `make help` to see all available commands:
 
-#### Mobile (Android Emulator)
-
-```bash
-flutter run -d android
 ```
+Dev Metrics vX.X.X
+──────────────────────────────────────────────
+ Development:
+   make install                   ➜ Install Flutter dependencies
+
+ Production:
+   make build-web-prod            ➜ Build web (prod)
+
+ Mobile:
+   make build-apk-release         ➜ Build APK release
+   make build-appbundle-release   ➜ Build AppBundle release
+   make build-ios-release         ➜ Build iOS release
+
+ Cleanup:
+   make clean                     ➜ Clean Flutter cache
+
+ Help:
+   make help                      ➜ Show this menu
+──────────────────────────────────────────────
+```
+
+> **Note**: All `make` commands read environment variables from your shell or `.env` file (`SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SENTRY_DSN`, `SENTRY_ENV`).
+
+### Local Development
 
 #### Mobile (iOS Simulator)
 
 ```bash
-flutter run -d "iPhone 17"
+make run-ios
 ```
 
-#### Web (Chrome)
+#### Web
 
 ```bash
-flutter run -d chrome
-```
-
-#### Web (Web Server)
-
-```bash
-flutter run -d web-server
+make build-web-prod
 ```
 
 Access the application at `http://localhost:xxxx`
@@ -144,56 +202,56 @@ Format all files:
 dart format .
 ```
 
+### Clean Build Artifacts
+
+```bash
+make clean
+```
+
 ---
 
 <h2 id="deployment">Deployment</h2>
+
+All release builds are handled via the `Makefile` and include `--obfuscate` and `--split-debug-info` automatically. Make sure your environment variables are set before building.
 
 ### Android (Google Play Store)
 
 Build release APK:
 
 ```bash
-flutter build apk --release
+make build-apk-release
 ```
 
 Build release AppBundle:
 
 ```bash
-flutter build appbundle --release
+make build-appbundle-release
 ```
 
 The generated files will be at:
 
 - APK: `build/app/outputs/flutter-apk/app-release.apk`
 - AppBundle: `build/app/outputs/bundle/release/app-release.aab`
+- Debug symbols: `build/debug-info/`
 
 ### iOS (App Store)
 
 ```bash
-flutter build ios --release
+make build-ios-release
 ```
 
 The generated files will be at:
 
 - IPA: `build/ios/ipa/`
+- Debug symbols: `build/debug-info/`
 
 ### Web
 
 ```bash
-flutter build web --release
+make build-web-prod
 ```
 
 The generated files will be at: `build/web/`
-
-### With Sentry Monitoring
-
-For all platforms, pass your DSN as an environment variable:
-
-```bash
-SENTRY_DSN=your-dsn-here flutter build apk --release
-SENTRY_DSN=your-dsn-here flutter build ios --release
-SENTRY_DSN=your-dsn-here flutter build web --release
-```
 
 ### Sentry Configuration
 
@@ -205,7 +263,7 @@ All production builds include:
 
 Make sure to:
 
-1. Set your `SENTRY_DSN` from your Sentry project
+1. Set your `SENTRY_DSN` and `SENTRY_ENV` in your environment or `.env` file
 2. Upload debug symbols to Sentry after each release for proper stack traces
 3. Keep `build/debug-info/` directory for symbolication
 
@@ -233,6 +291,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Victor Zarzar - [@Victor-Zarzar](https://github.com/Victor-Zarzar)
 
-Project Link: [https://github.com/Victor-Zarzar/flutter_boilerplate](https://github.com/Victor-Zarzar/flutter_boilerplate)
+Project Link: [https://github.com/Victor-Zarzar/flutter-dev-metrics](https://github.com/Victor-Zarzar/flutter-dev-metrics)
 
 ---
