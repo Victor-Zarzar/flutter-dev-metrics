@@ -1,4 +1,5 @@
-import 'package:dev_metrics/app/presentation/viewmodels/auth_viewmodel.dart';
+import 'package:dev_metrics/app/features/auth/data/repositories/auth_repository.dart';
+import 'package:dev_metrics/app/features/auth/data/viewmodels/auth_viewmodel.dart';
 import 'package:dev_metrics/app/presentation/viewmodels/locale_viewmodel.dart';
 import 'package:dev_metrics/app/presentation/viewmodels/notification_viewmodel.dart';
 import 'package:dev_metrics/app/shared/constants/constants.dart';
@@ -60,7 +61,10 @@ Future<void> main() async {
           ChangeNotifierProvider<UiProvider>(
             create: (_) => UiProvider()..init(),
           ),
-          ChangeNotifierProvider<AuthViewModel>(create: (_) => AuthViewModel()),
+          ChangeNotifierProvider<AuthViewModel>(
+            create: (_) =>
+                AuthViewModel(AuthRepositoryImpl(Supabase.instance.client)),
+          ),
         ],
         child: const AppWidget(),
       ),

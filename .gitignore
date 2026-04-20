@@ -47,3 +47,11 @@ app.*.map.json
 # Sentry
 sentry.properties
 sentry-wizard
+
+# Supabase
+supabase/.temp
+supabase/.branches
+
+# Env
+.env
+.env.*

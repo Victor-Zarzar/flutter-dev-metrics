@@ -1,5 +1,6 @@
 enum AppRoute {
   signin('/signin', 'signin'),
+  signup('/signup', 'signup'),
   home('/', 'home'),
   dashboard('/dashboard', 'dashboard'),
   settings('/settings', 'settings');

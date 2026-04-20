@@ -42,5 +42,36 @@
 	"description": "Este aplicativo foi desenvolvido como um boilerplate moderno, focado em boas práticas como arquitetura MVVM, suporte a múltiplas plataformas (mobile e web), internacionalização (i18n), tema escuro e código limpo.",
 	"developed": "Desenvolvido por Victor Zarzar",
 	"launch_error": "Erro ao abrir o link:",
-	"informationicon": "Informações sobre o aplicativo"
+	"informationicon": "Informações sobre o aplicativo",
+	"auth": {
+		"signin": {
+			"title": "Entrar",
+			"submit": "Entrar",
+			"create_account": "Criar conta",
+			"already_have_account": "Já tem uma conta? Entrar"
+		},
+		"signup": {
+			"title": "Criar conta",
+			"submit": "Cadastrar",
+			"success": "Conta criada com sucesso"
+		},
+		"fields": {
+			"email": "Email",
+			"password": "Senha"
+		},
+		"validation": {
+			"required_email": "Informe seu email.",
+			"invalid_email": "Informe um email válido.",
+			"required_password": "Informe sua senha.",
+			"short_password": "A senha deve ter pelo menos 6 caracteres."
+		},
+		"errors": {
+			"invalid_credentials": "Email ou senha inválidos.",
+			"email_not_confirmed": "Confirme seu email antes de entrar.",
+			"user_already_registered": "Este email já está cadastrado.",
+			"unauthorized": "Sessão inválida.",
+			"network": "Erro de conexão. Tente novamente.",
+			"unexpected": "Erro inesperado. Tente novamente."
+		}
+	}
 }

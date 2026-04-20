@@ -20,10 +20,10 @@
 	"light_theme": "Light",
 	"dark_theme": "Dark",
 	"system_theme": "System",
-	"light_theme_description": "Always use light theme",
-	"dark_theme_description": "Always use dark theme",
-	"system_theme_description": "Follow system settings",
-	"backtopage": "Go back",
+	"light_theme_description": "Light theme always active",
+	"dark_theme_description": "Dark theme always active",
+	"system_theme_description": "Follows system theme",
+	"backtopage": "Back",
 	"arrow_back_icon": "Back",
 	"arrow_forward_icon": "Go to",
 	"arrow_drop_icon": "Open options",
@@ -41,6 +41,37 @@
 	"dashboard_summary_icon": "Dashboard summary",
 	"description": "This application was developed as a modern boilerplate, focused on best practices such as MVVM architecture, multi-platform support (mobile and web), internationalization (i18n), dark mode, and clean code.",
 	"developed": "Developed by Victor Zarzar",
-	"launch_error": "Error opening link:",
-	"informationicon": "Application information"
+	"launch_error": "Error opening the link:",
+	"informationicon": "Application information",
+	"auth": {
+		"signin": {
+			"title": "Sign in",
+			"submit": "Sign in",
+			"create_account": "Create account",
+			"already_have_account": "Already have an account? Sign in"
+		},
+		"signup": {
+			"title": "Create account",
+			"submit": "Sign up",
+			"success": "Account created successfully"
+		},
+		"fields": {
+			"email": "Email",
+			"password": "Password"
+		},
+		"validation": {
+			"required_email": "Enter your email.",
+			"invalid_email": "Enter a valid email.",
+			"required_password": "Enter your password.",
+			"short_password": "Password must be at least 6 characters long."
+		},
+		"errors": {
+			"invalid_credentials": "Invalid email or password.",
+			"email_not_confirmed": "Please confirm your email before signing in.",
+			"user_already_registered": "This email is already registered.",
+			"unauthorized": "Invalid session.",
+			"network": "Connection error. Try again.",
+			"unexpected": "Unexpected error. Try again."
+		}
+	}
 }

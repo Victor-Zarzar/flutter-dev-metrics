@@ -1,4 +1,4 @@
-import 'package:dev_metrics/app/presentation/viewmodels/auth_viewmodel.dart';
+import 'package:dev_metrics/app/features/auth/data/viewmodels/auth_viewmodel.dart';
 import 'package:dev_metrics/app/routes/app_router.dart';
 import 'package:dev_metrics/app/shared/theme/theme_provider.dart';
 import 'package:easy_localization/easy_localization.dart';
