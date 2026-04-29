@@ -1,3 +1,4 @@
+import 'package:dev_metrics/app/shared/enums/snack_bar_type.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -81,11 +82,6 @@ extension ContextExtension on BuildContext {
     return showDialog<T>(context: this, builder: builder);
   }
 
-  /// Shows a snackbar with a colour driven by [SnackBarType].
-  ///
-  /// ```dart
-  /// context.showTypedSnackBar('Saved!', type: SnackBarType.success);
-  /// ```
   void showTypedSnackBar(
     String message, {
     SnackBarType type = SnackBarType.info,
@@ -108,7 +104,6 @@ extension ContextExtension on BuildContext {
       );
   }
 
-  // ── Routing shortcuts ────────────────────────────────────────────────────
   String get currentRoute {
     final router = GoRouter.of(this);
     final RouteMatch lastMatch =
