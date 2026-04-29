@@ -265,7 +265,7 @@ Make sure to:
 4. Push to the branch
 5. Open a Pull Request
 
-Report issues at: https://github.com/Victor-Zarzar/flutter-dev-metrics
+Report issues at: https://github.com/Victor-Zarzar/flutter-dev-metrics/issues
 
 ---
 

@@ -1,3 +1,4 @@
+import 'package:dev_metrics/app/features/auth/data/presentation/pages/forgot_password_page.dart';
 import 'package:dev_metrics/app/features/auth/data/presentation/pages/signin_page.dart';
 import 'package:dev_metrics/app/features/auth/data/presentation/pages/signup_page.dart';
 import 'package:dev_metrics/app/features/dashboard/presentation/pages/dashboard_page.dart';
@@ -22,19 +23,24 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => const DashboardPage(),
     ),
     GoRoute(
-      path: AppRoutes.signup,
-      name: 'signup',
-      builder: (context, state) => const SignupPage(),
-    ),
-    GoRoute(
       path: AppRoutes.settings,
       name: 'settings',
       builder: (context, state) => const SettingsPage(),
     ),
     GoRoute(
+      path: AppRoutes.signup,
+      name: 'signup',
+      builder: (context, state) => const SignupPage(),
+    ),
+    GoRoute(
       path: AppRoutes.signin,
       name: 'signin',
       builder: (context, state) => const SigninPage(),
+    ),
+    GoRoute(
+      path: AppRoutes.forgotPassword,
+      name: 'forgotPassword',
+      builder: (context, state) => const ForgotPasswordPage(),
     ),
   ],
 );

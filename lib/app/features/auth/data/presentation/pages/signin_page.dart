@@ -1,3 +1,4 @@
+import 'package:dev_metrics/app/extensions/context_extension.dart';
 import 'package:dev_metrics/app/features/auth/providers/auth_provider.dart';
 import 'package:dev_metrics/app/routes/app_routes.dart';
 import 'package:dev_metrics/app/shared/utils/app_utils.dart';
