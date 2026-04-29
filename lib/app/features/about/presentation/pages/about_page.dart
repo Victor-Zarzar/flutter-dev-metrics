@@ -1,6 +1,3 @@
-import 'package:dev_metrics/app/shared/theme/app_theme.dart';
-import 'package:dev_metrics/app/shared/theme/theme_provider.dart';
-import 'package:dev_metrics/app/shared/theme/typography_extension.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

@@ -1,5 +1,12 @@
+import 'package:dev_metrics/app/extensions/context_extension.dart';
 import 'package:dev_metrics/app/features/auth/providers/auth_provider.dart';
+import 'package:dev_metrics/app/shared/assets/app_assets.dart';
+import 'package:dev_metrics/app/shared/enums/buttom_enums.dart';
+import 'package:dev_metrics/app/shared/theme/app_borders.dart';
+import 'package:dev_metrics/app/shared/theme/app_spacing.dart';
 import 'package:dev_metrics/app/shared/utils/app_utils.dart';
+import 'package:dev_metrics/app/shared/widgets/app_button.dart';
+import 'package:dev_metrics/app/shared/widgets/app_text_field.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -61,7 +68,6 @@ class SignupPage extends StatelessWidget {
                   style: tt.bodyMedium?.copyWith(color: cs.onSurfaceVariant),
                 ).animate().fadeIn().slideY(begin: 0.2),
                 SizedBox(height: AppSpacing.xxxl.h),
-                // Form Card
                 Form(
                   key: formKey,
                   child: Column(
@@ -101,7 +107,7 @@ class SignupPage extends StatelessWidget {
                         prefixIcon: const Icon(Icons.lock_outline),
                         suffixIcon: IconButton(
                           icon: Icon(Icons.visibility),
-                          onPressed: () => null,
+                          onPressed: () {},
                         ),
                         validator: (v) {
                           if (AppUtils.isBlank(v)) {
@@ -122,7 +128,7 @@ class SignupPage extends StatelessWidget {
                         prefixIcon: const Icon(Icons.lock_outline),
                         suffixIcon: IconButton(
                           icon: Icon(Icons.visibility),
-                          onPressed: () => null,
+                          onPressed: () {},
                         ),
                         validator: (v) {
                           if (AppUtils.isBlank(v)) {
