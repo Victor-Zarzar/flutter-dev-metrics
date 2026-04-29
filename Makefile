@@ -16,6 +16,20 @@ run-ios:
 		--dart-define=SENTRY_DSN=$(SENTRY_DSN) \
 		--dart-define=SENTRY_ENV=${SENTRY_ENV} \
 
+run-chrome:
+	flutter run -d chrome \
+	    --dart-define=SUPABASE_URL=$(SUPABASE_URL) \
+	    --dart-define=SUPABASE_ANON_KEY=$(SUPABASE_ANON_KEY) \
+		--dart-define=SENTRY_DSN=$(SENTRY_DSN) \
+		--dart-define=SENTRY_ENV=${SENTRY_ENV} \
+
+run-web-server:
+	flutter run -d web-server \
+	    --dart-define=SUPABASE_URL=$(SUPABASE_URL) \
+	    --dart-define=SUPABASE_ANON_KEY=$(SUPABASE_ANON_KEY) \
+		--dart-define=SENTRY_DSN=$(SENTRY_DSN) \
+		--dart-define=SENTRY_ENV=${SENTRY_ENV} \
+
 build-web-prod:
 	flutter build web --release \
         --dart-define=SUPABASE_URL=$(SUPABASE_URL) \

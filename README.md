@@ -132,32 +132,6 @@ supabase db push
 
 <h2 id="usage">Usage</h2>
 
-This project includes a `Makefile` for common tasks. Run `make help` to see all available commands:
-
-```
-Dev Metrics vX.X.X
-──────────────────────────────────────────────
- Development:
-   make install                   ➜ Install Flutter dependencies
-
- Production:
-   make build-web-prod            ➜ Build web (prod)
-
- Mobile:
-   make build-apk-release         ➜ Build APK release
-   make build-appbundle-release   ➜ Build AppBundle release
-   make build-ios-release         ➜ Build iOS release
-
- Cleanup:
-   make clean                     ➜ Clean Flutter cache
-
- Help:
-   make help                      ➜ Show this menu
-──────────────────────────────────────────────
-```
-
-> **Note**: All `make` commands read environment variables from your shell or `.env` file (`SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SENTRY_DSN`, `SENTRY_ENV`).
-
 ### Local Development
 
 #### Mobile (iOS Simulator)
@@ -166,10 +140,22 @@ Dev Metrics vX.X.X
 make run-ios
 ```
 
-#### Web
+### Inspect Devtools
 
 ```bash
-make build-web-prod
+dart devtools
+```
+
+#### Web (Google Chrome)
+
+```bash
+make run-chrome
+```
+
+#### Or Web Server default
+
+```bash
+make run-web-server
 ```
 
 Access the application at `http://localhost:xxxx`
@@ -269,15 +255,17 @@ Make sure to:
 
 ---
 
-<h2 id="contributing">Contributing</h2>
-
-Contributions are welcome! Please feel free to submit a Pull Request.
+<h2 id="contributing">
+  Contributing
+</h2>
 
 1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
 5. Open a Pull Request
+
+Report issues at: https://github.com/Victor-Zarzar/flutter-dev-metrics
 
 ---
 
