@@ -100,25 +100,25 @@ make install
 
 ### 4. Configure Supabase
 
-Create a `.env` file (or configure via your preferred secret management):
+Pass the variables via `--dart-define` when running or building the app:
 
-```env
-SUPABASE_URL=https://your-project.supabase.co
-SUPABASE_ANON_KEY=your-anon-key
-SENTRY_DSN=your-sentry-dsn
-SENTRY_ENV=development
+```bash
+flutter run \
+  --dart-define=SUPABASE_URL=https://your-project.supabase.co \
+  --dart-define=SUPABASE_ANON_KEY=your-anon-key \
+  --dart-define=SENTRY_DSN=your-sentry-dsn \
+  --dart-define=SENTRY_ENV=development
 ```
 
 Then initialize Supabase in your app entry point:
 
 ```dart
-import 'package:dev_metrics/app/shared/constants/constants.dart';
+import 'package:dev_metrics/app/config/app_config.dart';
 
-await Supabase.initialize(
-  url: Constants.supabaseUrl,
-  anonKey: Constants.supabaseAnonKey,
-);
+await AppConfig.init();
 ```
+
+> **Note**: For release builds, `--dart-define` flags are already included via the `Makefile` targets. Make sure to pass them when invoking `make`.
 
 ### 5. Run Database Migrations
 

@@ -24,7 +24,7 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.signup,
       name: 'signup',
-      builder: (context, state) => const SignUpPage(),
+      builder: (context, state) => const SignupPage(),
     ),
     GoRoute(
       path: AppRoutes.settings,
@@ -34,7 +34,7 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.signin,
       name: 'signin',
-      builder: (context, state) => const SignInPage(),
+      builder: (context, state) => const SigninPage(),
     ),
   ],
 );

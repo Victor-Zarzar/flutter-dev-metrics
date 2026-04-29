@@ -1,4 +1,3 @@
-import 'package:dev_metrics/app/features/auth/data/viewmodels/auth_viewmodel.dart';
 import 'package:dev_metrics/app/routes/app_router.dart';
 import 'package:dev_metrics/app/shared/theme/theme_provider.dart';
 import 'package:dev_metrics/app/shared/wrapper/screen_util_wrapper.dart';
@@ -16,8 +15,8 @@ class AppWidget extends StatelessWidget {
   }
 
   Widget _buildMaterialApp(BuildContext context) {
-    return Consumer2<UiProvider, AuthViewModel>(
-      builder: (context, uiProvider, authViewModel, _) {
+    return Consumer<UiProvider>(
+      builder: (context, uiProvider, _) {
         return MaterialApp.router(
           title: 'Dev Metrics',
           debugShowCheckedModeBanner: false,
