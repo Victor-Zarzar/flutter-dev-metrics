@@ -33,10 +33,14 @@ class AppLogger {
       developer.log(message, name: name, error: error, stackTrace: stackTrace);
     }
   }
+
+  static void debug(String message) {
+    _log('\x1B[90m$message\x1B[0m', name: 'DEBUG');
+  }
 }
 
-// Global helper functions as requested by the user
 void logInfo(String msg) => AppLogger.info(msg);
 void logSuccess(String msg) => AppLogger.success(msg);
 void logWarning(String msg) => AppLogger.warning(msg);
 void logError(String msg) => AppLogger.error(msg);
+void logDebug(String msg) => AppLogger.debug(msg);

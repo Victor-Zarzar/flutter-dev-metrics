@@ -1,4 +1,4 @@
-import 'package:dev_metrics/app/shared/constants/constants.dart';
+import 'package:dev_metrics/app/config/app_config.dart';
 import 'package:dev_metrics/app/shared/services/notification_service.dart';
 import 'package:dev_metrics/app/shared/services/sentry_service.dart';
 import 'package:dev_metrics/app/shared/wrapper/localization_wrapper.dart';
@@ -8,7 +8,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:timezone/data/latest_10y.dart' as tz;
 
 Future<void> main() async {
@@ -18,12 +17,7 @@ Future<void> main() async {
 
   await EasyLocalization.ensureInitialized();
 
-  await Supabase.initialize(
-    url: Constants.supabaseUrl,
-    anonKey: Constants.supabaseAnonKey,
-  );
-
-  // await AppConfig.init();
+  await AppConfig.init();
 
   if (!kIsWeb) {
     await NotificationService.init();
