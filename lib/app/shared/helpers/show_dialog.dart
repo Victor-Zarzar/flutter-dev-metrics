@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:dev_metrics/app/routes/global_navigator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 Future<T?> showAppDialog<T>({
   required Widget child,
