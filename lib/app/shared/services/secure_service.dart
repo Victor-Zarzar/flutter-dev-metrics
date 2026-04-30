@@ -1,34 +1,32 @@
+import 'package:dev_metrics/app/shared/utils/task_runner.dart';
+import 'package:dev_metrics/app/shared/utils/typedefs.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-enum SecureStorageKeys { apiKey }
-
 class SecureStorageService {
-  static final SecureStorageService _instance =
-      SecureStorageService._internal();
+  SecureStorageService._();
+  static final SecureStorageService instance = SecureStorageService._();
 
-  factory SecureStorageService() => _instance;
-
-  static late final FlutterSecureStorage _secureStorage;
-
-  SecureStorageService._internal();
-
-  static void init() {
-    _secureStorage = const FlutterSecureStorage(
-      aOptions: AndroidOptions.biometric(enforceBiometrics: true),
-      iOptions: IOSOptions(
-        accessibility: KeychainAccessibility.first_unlock_this_device,
-      ),
-    );
-  }
-
-  Future<String?> getApiKey() async =>
-      await _secureStorage.read(key: SecureStorageKeys.apiKey.name);
-
-  Future<void> setApiKey(String apiKey) async => await _secureStorage.write(
-    key: SecureStorageKeys.apiKey.name,
-    value: apiKey,
+  final _storage = const FlutterSecureStorage(
+    aOptions: AndroidOptions.defaultOptions,
   );
 
-  Future<bool> hasApiKey() async =>
-      await _secureStorage.containsKey(key: SecureStorageKeys.apiKey.name);
+  FutureEither<void> write(String key, String value) async {
+    return runTask(() => _storage.write(key: key, value: value));
+  }
+
+  FutureEither<String?> read(String key) async {
+    return runTask(() => _storage.read(key: key));
+  }
+
+  FutureEither<void> delete(String key) async {
+    return runTask(() => _storage.delete(key: key));
+  }
+
+  FutureEither<void> deleteAll() async {
+    return runTask(() => _storage.deleteAll());
+  }
+
+  FutureEither<bool> containsKey(String key) async {
+    return runTask(() => _storage.containsKey(key: key));
+  }
 }

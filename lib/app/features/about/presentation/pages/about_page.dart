@@ -1,106 +1,91 @@
-import 'package:dev_metrics/app/shared/theme/app_theme.dart';
-import 'package:dev_metrics/app/shared/theme/theme_provider.dart';
-import 'package:dev_metrics/app/shared/theme/typography_extension.dart';
+import 'package:dev_metrics/app/extensions/context_extension.dart';
+import 'package:dev_metrics/app/shared/theme/app_borders.dart';
+import 'package:dev_metrics/app/shared/theme/app_spacing.dart';
+import 'package:dev_metrics/app/shared/widgets/app_top_bar.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class AboutPage extends StatefulWidget {
+class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
 
-  @override
-  State<AboutPage> createState() => _AboutPageState();
-}
-
-class _AboutPageState extends State<AboutPage> {
   Future<void> _launchUrl(String url) async {
-    final Uri uri = Uri.parse(url);
-    if (!await launchUrl(uri)) {
+    final uri = Uri.parse(url);
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
       throw Exception('${'launch_error'.tr()} $url');
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    double myHeight = MediaQuery.of(context).size.height;
-    double myWidth = MediaQuery.of(context).size.width;
-    return Consumer<UiProvider>(
-      builder: (context, notifier, child) {
-        return Scaffold(
-          backgroundColor: notifier.isDark
-              ? BackGroundColor.fourthColor
-              : BackGroundColor.primaryColor,
-          body: SizedBox(
-            height: myHeight,
-            width: myWidth,
-            child: Column(
-              children: [
-                SizedBox(
-                  width: myWidth,
-                  child: AppBar(
-                    leading: Semantics(
-                      label: "backtopage".tr(),
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.arrow_back_ios,
-                          size: 20,
-                          color: IconColor.primaryColor,
-                          semanticLabel: 'arrow_back_icon'.tr(),
-                        ),
-                        onPressed: () => Navigator.of(context).pop(),
-                      ),
-                    ),
-                    centerTitle: true,
-                    backgroundColor: notifier.isDark
-                        ? AppBarColor.thirdColor
-                        : AppBarColor.secondaryColor,
-                    title: Text("about".tr(), style: context.h1),
-                  ),
+    final theme = context.theme;
+    final colorScheme = theme.colorScheme;
+    final textTheme = theme.textTheme;
+
+    return Scaffold(
+      backgroundColor: colorScheme.surface,
+      appBar: AppTopBar(title: 'about'.tr()),
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(AppSpacing.xl.w),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Icon(
+                Icons.add_ic_call,
+                size: 64.sp,
+                color: colorScheme.primary,
+                semanticLabel: 'informationicon'.tr(),
+              ),
+
+              SizedBox(height: AppSpacing.lg.h),
+
+              Text(
+                'about'.tr(),
+                textAlign: TextAlign.center,
+                style: textTheme.headlineMedium?.copyWith(
+                  fontWeight: FontWeight.w900,
+                  color: colorScheme.onSurface,
+                  fontSize: 28.sp,
                 ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.info,
-                          semanticLabel: 'informationicon'.tr(),
-                          color: IconColor.primaryColor,
-                        ),
-                        const SizedBox(width: 10),
-                        Expanded(
-                          child: Text(
-                            "description".tr(),
-                            style: context.h2,
-                            textAlign: TextAlign.justify,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+              ),
+
+              SizedBox(height: AppSpacing.md.h),
+
+              Text(
+                'description'.tr(),
+                textAlign: TextAlign.center,
+                style: textTheme.bodyMedium?.copyWith(
+                  color: colorScheme.onSurfaceVariant,
+                  fontSize: 14.sp,
+                  height: 1.5,
                 ),
-                const SizedBox(height: 10),
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(bottom: 40),
-                    child: GestureDetector(
-                      onTap: () {
-                        _launchUrl('https://www.victorzarzar.com.br');
-                      },
-                      child: Text(
-                        "developed".tr(),
-                        textAlign: TextAlign.center,
-                        style: context.h2,
-                      ),
+              ),
+
+              SizedBox(height: AppSpacing.xl.h),
+
+              InkWell(
+                borderRadius: AppBorders.lg,
+                onTap: () => _launchUrl('https://www.victorzarzar.com.br'),
+                child: Padding(
+                  padding: EdgeInsets.all(AppSpacing.md.w),
+                  child: Text(
+                    'developed'.tr(),
+                    textAlign: TextAlign.center,
+                    style: textTheme.bodyMedium?.copyWith(
+                      color: colorScheme.primary,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 14.sp,
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

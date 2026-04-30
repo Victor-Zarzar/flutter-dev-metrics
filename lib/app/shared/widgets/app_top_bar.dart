@@ -1,0 +1,79 @@
+import 'package:dev_metrics/app/extensions/context_extension.dart';
+import 'package:dev_metrics/app/routes/app_routes.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hugeicons/hugeicons.dart';
+
+class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
+  const AppTopBar({
+    super.key,
+    required this.title,
+    this.titleWidget,
+    this.actions,
+    this.centerTitle = true,
+    this.showBackButton = false,
+    this.onPressed,
+    this.isTransparent = false,
+  });
+
+  final String title;
+  final Widget? titleWidget;
+  final List<Widget>? actions;
+  final VoidCallback? onPressed;
+  final bool? centerTitle;
+  final bool showBackButton;
+  final bool isTransparent;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = context.theme;
+
+    final bool canPop = context.canPop();
+
+    void handleBack() {
+      if (onPressed != null) {
+        onPressed!();
+      } else if (canPop) {
+        context.pop();
+      } else {
+        context.go(AppRoutes.home);
+      }
+    }
+
+    return AppBar(
+      centerTitle: centerTitle,
+      elevation: 0,
+      backgroundColor: isTransparent ? Colors.transparent : null,
+      shadowColor: Colors.transparent,
+      title:
+          titleWidget ??
+          Text(
+            title,
+            style:
+                theme.appBarTheme.titleTextStyle?.copyWith(
+                  fontWeight: FontWeight.w600,
+                ) ??
+                theme.textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
+          ),
+      leadingWidth: 40.w,
+      leading: GestureDetector(
+        onTap: handleBack,
+        child: ColoredBox(
+          color: Colors.transparent,
+          child: const HugeIcon(
+            icon: HugeIcons.strokeRoundedArrowLeft01,
+            size: 24,
+          ),
+        ),
+      ),
+      iconTheme: theme.appBarTheme.iconTheme,
+      actions: actions ?? [],
+    );
+  }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+}
