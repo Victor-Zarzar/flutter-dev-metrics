@@ -1,156 +1,116 @@
-import 'package:dev_metrics/app/shared/theme/app_theme.dart';
-import 'package:dev_metrics/app/shared/theme/theme_provider.dart';
-import 'package:dev_metrics/app/shared/theme/typography_extension.dart';
+import 'package:dev_metrics/app/extensions/context_extension.dart';
+import 'package:dev_metrics/app/shared/theme/app_borders.dart';
+import 'package:dev_metrics/app/shared/theme/app_spacing.dart';
+import 'package:dev_metrics/app/shared/widgets/app_top_bar.dart';
 import 'package:dev_metrics/app/shared/widgets/responsive.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ThemePage extends StatelessWidget {
   const ThemePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<UiProvider>(
-      builder: (context, notifier, child) {
-        return Scaffold(
-          backgroundColor: notifier.isDark
-              ? BackGroundColor.fourthColor
-              : BackGroundColor.primaryColor,
-          appBar: AppBar(
-            leading: Semantics(
-              label: "backtopage".tr(),
-              child: IconButton(
-                icon: Icon(
-                  Icons.arrow_back_ios,
-                  size: 20,
-                  color: IconColor.primaryColor,
-                  semanticLabel: 'arrow_back_icon'.tr(),
+    final colorScheme = context.theme.colorScheme;
+
+    return Scaffold(
+      backgroundColor: colorScheme.surface,
+      appBar: AppTopBar(title: 'select_theme'.tr(), showBackButton: true),
+      body: const Responsive(
+        mobile: _ThemeContent(maxContentWidth: 420),
+        tablet: _ThemeContent(maxContentWidth: 560),
+        desktop: _ThemeContent(maxContentWidth: 920),
+      ),
+    );
+  }
+}
+
+class _ThemeContent extends StatelessWidget {
+  const _ThemeContent({required this.maxContentWidth});
+
+  final double maxContentWidth;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxWidth: maxContentWidth),
+        child: ListView(
+          padding: EdgeInsets.all(AppSpacing.xl.w),
+          children: [
+            _ThemeInfoCard(
+              icon: Icons.devices_outlined,
+              title: 'system_theme'.tr(),
+              subtitle: 'system_theme_description'.tr(),
+              selected: true,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _ThemeInfoCard extends StatelessWidget {
+  const _ThemeInfoCard({
+    required this.icon,
+    required this.title,
+    required this.subtitle,
+    required this.selected,
+  });
+
+  final IconData icon;
+  final String title;
+  final String subtitle;
+  final bool selected;
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = context.theme.colorScheme;
+    final textTheme = context.theme.textTheme;
+
+    return Container(
+      padding: EdgeInsets.all(AppSpacing.lg.w),
+      decoration: BoxDecoration(
+        color: colorScheme.surfaceContainerHighest,
+        borderRadius: AppBorders.card,
+        border: Border.all(
+          color: selected ? colorScheme.primary : colorScheme.outlineVariant,
+          width: selected ? 1.6 : 1,
+        ),
+      ),
+      child: Row(
+        children: [
+          Icon(icon, color: colorScheme.primary, size: 28.sp),
+          SizedBox(width: AppSpacing.md.w),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: textTheme.bodyLarge?.copyWith(
+                    color: colorScheme.onSurface,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 16.sp,
+                  ),
                 ),
-                onPressed: () => Navigator.of(context).pop(),
-              ),
-            ),
-            title: Text("select_theme".tr(), style: context.h1),
-            centerTitle: true,
-            backgroundColor: notifier.isDark
-                ? AppBarColor.thirdColor
-                : AppBarColor.secondaryColor,
-          ),
-          body: Responsive(
-            mobile: _buildContent(
-              context: context,
-              notifier: notifier,
-              maxContentWidth: 420,
-            ),
-            tablet: _buildContent(
-              context: context,
-              notifier: notifier,
-              maxContentWidth: 560,
-            ),
-            desktop: _buildContent(
-              context: context,
-              notifier: notifier,
-              maxContentWidth: 920,
+                SizedBox(height: AppSpacing.xs.h),
+                Text(
+                  subtitle,
+                  style: textTheme.bodyMedium?.copyWith(
+                    color: colorScheme.onSurfaceVariant,
+                    fontSize: 13.sp,
+                    height: 1.4,
+                  ),
+                ),
+              ],
             ),
           ),
-        );
-      },
+          Icon(Icons.check_circle, color: colorScheme.primary, size: 24.sp),
+        ],
+      ),
     );
-  }
-
-  Widget _buildContent({
-    required BuildContext context,
-    required UiProvider notifier,
-    required double maxContentWidth,
-  }) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(
-              maxWidth: constraints.maxWidth < maxContentWidth
-                  ? constraints.maxWidth
-                  : maxContentWidth,
-            ),
-            child: RadioGroup<ThemeModeOption>(
-              groupValue: notifier.themeMode,
-              onChanged: (ThemeModeOption? value) {
-                if (value != null) {
-                  notifier.changeTheme(value);
-                }
-              },
-              child: ListView(
-                padding: const EdgeInsets.fromLTRB(16, 24, 16, 16),
-                children: ThemeModeOption.values.map((option) {
-                  String label;
-                  switch (option) {
-                    case ThemeModeOption.light:
-                      label = "light_theme".tr();
-                      break;
-                    case ThemeModeOption.dark:
-                      label = "dark_theme".tr();
-                      break;
-                    case ThemeModeOption.system:
-                      label = "system_theme".tr();
-                      break;
-                  }
-
-                  final bool isSelected = notifier.themeMode == option;
-
-                  return Card(
-                    color: notifier.isDark
-                        ? CardColor.primaryColor
-                        : CardColor.secondaryColor,
-                    elevation: isSelected ? 4 : 1,
-                    margin: const EdgeInsets.only(bottom: 12),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      side: BorderSide(
-                        color: isSelected
-                            ? IconColor.fourthColor
-                            : Colors.transparent,
-                        width: 1.2,
-                      ),
-                    ),
-                    child: RadioListTile<ThemeModeOption>(
-                      contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 8,
-                      ),
-                      title: Text(label, style: context.bodyMediumFont),
-                      subtitle: Text(_subtitleFor(option), style: context.h2),
-                      fillColor: WidgetStateProperty.resolveWith<Color>((
-                        states,
-                      ) {
-                        if (states.contains(WidgetState.selected)) {
-                          return notifier.isDark
-                              ? RadioColor.primaryColor
-                              : RadioColor.thirdColor;
-                        }
-                        return notifier.isDark
-                            ? RadioColor.secondaryColor
-                            : RadioColor.thirdColor;
-                      }),
-                      value: option,
-                    ),
-                  );
-                }).toList(),
-              ),
-            ),
-          ),
-        );
-      },
-    );
-  }
-
-  String _subtitleFor(ThemeModeOption option) {
-    switch (option) {
-      case ThemeModeOption.system:
-        return "system_theme_description".tr();
-      case ThemeModeOption.light:
-        return "light_theme_description".tr();
-      case ThemeModeOption.dark:
-        return "dark_theme_description".tr();
-    }
   }
 }

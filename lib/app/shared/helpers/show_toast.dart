@@ -2,9 +2,8 @@ import 'package:dev_metrics/app/extensions/context_extension.dart';
 import 'package:dev_metrics/app/routes/global_navigator.dart';
 import 'package:dev_metrics/app/shared/widgets/toast/toast.dart';
 import 'package:dev_metrics/app/shared/widgets/toast/toast_card.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hugeicons/hugeicons.dart';
 
 void showToast(
   BuildContext context, {
@@ -58,10 +57,10 @@ void showToast(
       leading: Icon(
         icon ??
             (toastStatus == 'success'
-                ? HugeIcons.strokeRoundedTickCircle
+                ? Icons.add_ic_call
                 : toastStatus == 'error'
-                ? HugeIcons.strokeRoundedAlertCircle
-                : HugeIcons.strokeRoundedInformationCircle),
+                ? Icons.add_ic_call
+                : Icons.add_ic_call),
         color: iconColor,
         size: 22.sp,
       ),

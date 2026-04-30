@@ -1,4 +1,42 @@
 {
+	"shared": {
+		"get_started": "Empezar"
+	},
+	"onboarding": {
+		"app_name": "Dev Metrics",
+		"onboarding_title_1": "Sigue tus métricas como desarrollador",
+		"onboarding_subtitle_1": "Monitorea hábitos, progreso y productividad en un solo lugar.",
+		"onboarding_title_2": "Visualiza tu evolución",
+		"onboarding_subtitle_2": "Sigue tu progreso con métricas claras.",
+		"onboarding_title_3": "Crea mejores rutinas",
+		"onboarding_subtitle_3": "Mejora la consistencia y el rendimiento."
+	},
+	"auth": {
+		"log_in": "Iniciar sesión",
+		"log_in_subtitle": "Accede a tu cuenta para continuar",
+		"create_account": "Crear cuenta",
+		"create_account_subtitle": "Comienza tu camino en Dev Metrics",
+		"email": "Correo electrónico",
+		"password": "Contraseña",
+		"confirm_password": "Confirmar contraseña",
+		"name": "Nombre",
+		"email_required": "El correo es obligatorio",
+		"email_invalid": "Correo inválido",
+		"password_required": "La contraseña es obligatoria",
+		"password_too_short": "Debe tener al menos 6 caracteres",
+		"confirm_password_required": "Confirma tu contraseña",
+		"passwords_do_not_match": "Las contraseñas no coinciden",
+		"name_required": "El nombre es obligatorio",
+		"remember_me": "Recordarme",
+		"forgot_password": "¿Olvidaste tu contraseña?",
+		"dont_have_account": "¿No tienes cuenta? ",
+		"already_have_account": "¿Ya tienes cuenta? ",
+		"sign_up": "Registrarse",
+		"forgot_password_title": "Restablecer contraseña",
+		"forgot_password_subtitle": "Ingresa tu correo y te enviaremos un enlace para restablecerla.",
+		"back_to_login": "Volver al inicio de sesión",
+		"send_reset_link": "Enviar enlace"
+	},
 	"app_bar_title": "Flutter Boilerplate",
 	"home": "Inicio",
 	"welcome": "Bienvenido",
@@ -42,36 +80,5 @@
 	"description": "Esta aplicación fue desarrollada como un boilerplate moderno, enfocada en buenas prácticas como arquitectura MVVM, soporte multiplataforma (móvil y web), internacionalización (i18n), modo oscuro y código limpio.",
 	"developed": "Desarrollado por Victor Zarzar",
 	"launch_error": "Error al abrir el enlace:",
-	"informationicon": "Información de la aplicación",
-	"auth": {
-		"signin": {
-			"title": "Iniciar sesión",
-			"submit": "Entrar",
-			"create_account": "Crear cuenta",
-			"already_have_account": "¿Ya tienes una cuenta? Inicia sesión"
-		},
-		"signup": {
-			"title": "Crear cuenta",
-			"submit": "Registrarse",
-			"success": "Cuenta creada con éxito"
-		},
-		"fields": {
-			"email": "Correo electrónico",
-			"password": "Contraseña"
-		},
-		"validation": {
-			"required_email": "Introduce tu correo electrónico.",
-			"invalid_email": "Introduce un correo válido.",
-			"required_password": "Introduce tu contraseña.",
-			"short_password": "La contraseña debe tener al menos 6 caracteres."
-		},
-		"errors": {
-			"invalid_credentials": "Correo o contraseña inválidos.",
-			"email_not_confirmed": "Confirma tu correo antes de iniciar sesión.",
-			"user_already_registered": "Este correo ya está registrado.",
-			"unauthorized": "Sesión inválida.",
-			"network": "Error de conexión. Inténtalo de nuevo.",
-			"unexpected": "Error inesperado. Inténtalo de nuevo."
-		}
-	}
+	"informationicon": "Información de la aplicación"
 }

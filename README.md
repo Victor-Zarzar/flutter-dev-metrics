@@ -103,7 +103,7 @@ make install
 Pass the variables via `--dart-define` when running or building the app:
 
 ```bash
-flutter run \
+flutter run -d "iPhone 17" \
   --dart-define=SUPABASE_URL=https://your-project.supabase.co \
   --dart-define=SUPABASE_ANON_KEY=your-anon-key \
   --dart-define=SENTRY_DSN=your-sentry-dsn \

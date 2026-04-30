@@ -54,6 +54,7 @@ flutter:
     - assets/
     - assets/translations/
     - assets/icons/
+    - assets/images/
     - assets/fonts/Roboto-Regular.ttf
     - assets/fonts/Roboto-Bold.ttf
 

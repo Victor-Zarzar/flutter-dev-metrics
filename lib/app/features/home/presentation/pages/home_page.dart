@@ -1,93 +1,129 @@
+import 'package:dev_metrics/app/extensions/context_extension.dart';
 import 'package:dev_metrics/app/features/dashboard/presentation/pages/dashboard_page.dart';
-import 'package:dev_metrics/app/shared/theme/app_theme.dart';
-import 'package:dev_metrics/app/shared/theme/theme_provider.dart';
-import 'package:dev_metrics/app/shared/theme/typography_extension.dart';
+import 'package:dev_metrics/app/features/settings/presentation/pages/settings_page.dart';
+import 'package:dev_metrics/app/shared/theme/app_borders.dart';
+import 'package:dev_metrics/app/shared/theme/app_spacing.dart';
+import 'package:dev_metrics/app/shared/widgets/app_top_bar.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  Widget build(BuildContext context) {
+    final theme = context.theme;
+    final colorScheme = theme.colorScheme;
+    final textTheme = theme.textTheme;
+
+    return Scaffold(
+      backgroundColor: colorScheme.surface,
+      appBar: AppTopBar(title: 'home'.tr()),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(AppSpacing.xl.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                'welcome'.tr(),
+                style: textTheme.headlineMedium?.copyWith(
+                  fontWeight: FontWeight.w900,
+                  color: colorScheme.onSurface,
+                  fontSize: 28.sp,
+                ),
+              ),
+              SizedBox(height: AppSpacing.sm.h),
+              Text(
+                'home_subtitle'.tr(),
+                style: textTheme.bodyMedium?.copyWith(
+                  color: colorScheme.onSurfaceVariant,
+                  fontSize: 14.sp,
+                  height: 1.5,
+                ),
+              ),
+
+              SizedBox(height: AppSpacing.xl.h),
+
+              _HomeSectionTitle(title: 'quick_actions'.tr()),
+              SizedBox(height: AppSpacing.md.h),
+
+              Row(
+                children: [
+                  Expanded(
+                    child: _HomeActionCard(
+                      icon: Icons.dashboard,
+                      label: 'view_metrics'.tr(),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const DashboardPage(),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  SizedBox(width: AppSpacing.md.w),
+                  Expanded(
+                    child: _HomeActionCard(
+                      icon: Icons.settings,
+                      label: 'settings'.tr(),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const SettingsPage(),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
+
+              SizedBox(height: AppSpacing.xl.h),
+
+              _HomeSectionTitle(title: 'overview'.tr()),
+              SizedBox(height: AppSpacing.md.h),
+
+              Row(
+                children: [
+                  Expanded(
+                    child: _MiniStatCard(title: 'projects'.tr(), value: '12'),
+                  ),
+                  SizedBox(width: AppSpacing.md.w),
+                  Expanded(
+                    child: _MiniStatCard(title: 'tasks'.tr(), value: '28'),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomeSectionTitle extends StatelessWidget {
+  const _HomeSectionTitle({required this.title});
+
+  final String title;
+
   @override
   Widget build(BuildContext context) {
-    return Consumer<UiProvider>(
-      builder: (context, notifier, child) {
-        return Scaffold(
-          backgroundColor: notifier.isDark
-              ? BackGroundColor.fourthColor
-              : BackGroundColor.primaryColor,
-          appBar: AppBar(
-            centerTitle: true,
-            title: Text("home".tr(), style: context.h1),
-            backgroundColor: notifier.isDark
-                ? AppBarColor.thirdColor
-                : AppBarColor.secondaryColor,
-          ),
-          body: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("welcome".tr(), style: context.h1),
-                const SizedBox(height: 8),
-                Text("home_subtitle".tr(), style: context.h2),
-                const SizedBox(height: 20),
-                Text("quick_actions".tr(), style: context.h2),
-                const SizedBox(height: 10),
+    final textTheme = context.theme.textTheme;
+    final colorScheme = context.theme.colorScheme;
 
-                Row(
-                  children: [
-                    Expanded(
-                      child: _HomeActionCard(
-                        icon: Icons.analytics_outlined,
-                        label: "view_metrics".tr(),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => DashboardPage(),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: _HomeActionCard(
-                        icon: Icons.settings_outlined,
-                        label: "settings".tr(),
-                        onTap: () {},
-                      ),
-                    ),
-                  ],
-                ),
-
-                const SizedBox(height: 20),
-                Text("overview".tr(), style: context.h2),
-                const SizedBox(height: 10),
-
-                Row(
-                  children: [
-                    Expanded(
-                      child: _MiniStatCard(title: "projects".tr(), value: "12"),
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: _MiniStatCard(title: "tasks".tr(), value: "28"),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        );
-      },
+    return Text(
+      title,
+      style: textTheme.titleMedium?.copyWith(
+        color: colorScheme.onSurface,
+        fontWeight: FontWeight.w800,
+        fontSize: 18.sp,
+      ),
     );
   }
 }
@@ -105,23 +141,32 @@ class _HomeActionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ui = context.watch<UiProvider>();
+    final colorScheme = context.theme.colorScheme;
+    final textTheme = context.theme.textTheme;
 
-    return GestureDetector(
+    return InkWell(
+      borderRadius: AppBorders.card,
       onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.all(16),
+      child: Ink(
+        padding: EdgeInsets.all(AppSpacing.lg.w),
         decoration: BoxDecoration(
-          color: ui.isDark
-              ? AppBarColor.thirdColor
-              : AppBarColor.secondaryColor,
-          borderRadius: BorderRadius.circular(12),
+          color: colorScheme.surfaceContainerHighest,
+          borderRadius: AppBorders.card,
+          border: Border.all(color: colorScheme.outlineVariant),
         ),
         child: Column(
           children: [
-            Icon(icon, color: IconColor.primaryColor),
-            const SizedBox(height: 10),
-            Text(label, style: context.h2),
+            Icon(icon, size: 28.sp, color: colorScheme.primary),
+            SizedBox(height: AppSpacing.sm.h),
+            Text(
+              label,
+              textAlign: TextAlign.center,
+              style: textTheme.bodyMedium?.copyWith(
+                color: colorScheme.onSurface,
+                fontWeight: FontWeight.w700,
+                fontSize: 14.sp,
+              ),
+            ),
           ],
         ),
       ),
@@ -137,19 +182,34 @@ class _MiniStatCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ui = context.watch<UiProvider>();
+    final colorScheme = context.theme.colorScheme;
+    final textTheme = context.theme.textTheme;
 
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(AppSpacing.lg.w),
       decoration: BoxDecoration(
-        color: ui.isDark ? AppBarColor.thirdColor : AppBarColor.secondaryColor,
-        borderRadius: BorderRadius.circular(12),
+        color: colorScheme.surfaceContainerHighest,
+        borderRadius: AppBorders.card,
+        border: Border.all(color: colorScheme.outlineVariant),
       ),
       child: Column(
         children: [
-          Text(title, style: context.h2),
-          const SizedBox(height: 8),
-          Text(value, style: context.h1),
+          Text(
+            title,
+            style: textTheme.bodyMedium?.copyWith(
+              color: colorScheme.onSurfaceVariant,
+              fontSize: 13.sp,
+            ),
+          ),
+          SizedBox(height: AppSpacing.xs.h),
+          Text(
+            value,
+            style: textTheme.headlineSmall?.copyWith(
+              color: colorScheme.onSurface,
+              fontWeight: FontWeight.w900,
+              fontSize: 24.sp,
+            ),
+          ),
         ],
       ),
     );

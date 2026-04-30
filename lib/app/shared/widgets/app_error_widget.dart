@@ -1,8 +1,7 @@
 import 'package:dev_metrics/app/extensions/context_extension.dart';
 import 'package:dev_metrics/app/shared/enums/buttom_enums.dart';
 import 'package:dev_metrics/app/shared/widgets/app_button.dart';
-import 'package:flutter/widgets.dart';
-import 'package:hugeicons/hugeicons.dart';
+import 'package:flutter/material.dart';
 
 class AppErrorWidget extends StatelessWidget {
   const AppErrorWidget({
@@ -10,7 +9,7 @@ class AppErrorWidget extends StatelessWidget {
     this.title = 'Something went wrong',
     this.message,
     this.onRetry,
-    this.icon = HugeIcons.strokeRoundedAlertCircle,
+    this.icon = Icons.add_ic_call,
   });
 
   final String title;

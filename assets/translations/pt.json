@@ -1,4 +1,42 @@
 {
+	"shared": {
+		"get_started": "Começar"
+	},
+	"onboarding": {
+		"app_name": "Dev Metrics",
+		"onboarding_title_1": "Acompanhe suas métricas como dev",
+		"onboarding_subtitle_1": "Monitore hábitos, progresso e produtividade em um só lugar.",
+		"onboarding_title_2": "Visualize sua evolução",
+		"onboarding_subtitle_2": "Acompanhe seu progresso com métricas claras.",
+		"onboarding_title_3": "Crie melhores rotinas",
+		"onboarding_subtitle_3": "Melhore consistência e performance."
+	},
+	"auth": {
+		"log_in": "Entrar",
+		"log_in_subtitle": "Acesse sua conta para continuar",
+		"create_account": "Criar conta",
+		"create_account_subtitle": "Comece sua jornada no Dev Metrics",
+		"email": "Email",
+		"password": "Senha",
+		"confirm_password": "Confirmar senha",
+		"name": "Nome",
+		"email_required": "Email é obrigatório",
+		"email_invalid": "Email inválido",
+		"password_required": "Senha é obrigatória",
+		"password_too_short": "A senha deve ter pelo menos 6 caracteres",
+		"confirm_password_required": "Confirme sua senha",
+		"passwords_do_not_match": "As senhas não coincidem",
+		"name_required": "Nome é obrigatório",
+		"remember_me": "Lembrar de mim",
+		"forgot_password": "Esqueceu a senha?",
+		"dont_have_account": "Não tem conta? ",
+		"already_have_account": "Já tem conta? ",
+		"sign_up": "Cadastrar",
+		"forgot_password_title": "Redefinir senha",
+		"forgot_password_subtitle": "Digite seu email e enviaremos um link para redefinir sua senha.",
+		"back_to_login": "Voltar para o login",
+		"send_reset_link": "Enviar link de redefinição"
+	},
 	"app_bar_title": "Flutter Boilerplate",
 	"home": "Início",
 	"welcome": "Bem-vindo",
@@ -42,36 +80,5 @@
 	"description": "Este aplicativo foi desenvolvido como um boilerplate moderno, focado em boas práticas como arquitetura MVVM, suporte a múltiplas plataformas (mobile e web), internacionalização (i18n), tema escuro e código limpo.",
 	"developed": "Desenvolvido por Victor Zarzar",
 	"launch_error": "Erro ao abrir o link:",
-	"informationicon": "Informações sobre o aplicativo",
-	"auth": {
-		"signin": {
-			"title": "Entrar",
-			"submit": "Entrar",
-			"create_account": "Criar conta",
-			"already_have_account": "Já tem uma conta? Entrar"
-		},
-		"signup": {
-			"title": "Criar conta",
-			"submit": "Cadastrar",
-			"success": "Conta criada com sucesso"
-		},
-		"fields": {
-			"email": "Email",
-			"password": "Senha"
-		},
-		"validation": {
-			"required_email": "Informe seu email.",
-			"invalid_email": "Informe um email válido.",
-			"required_password": "Informe sua senha.",
-			"short_password": "A senha deve ter pelo menos 6 caracteres."
-		},
-		"errors": {
-			"invalid_credentials": "Email ou senha inválidos.",
-			"email_not_confirmed": "Confirme seu email antes de entrar.",
-			"user_already_registered": "Este email já está cadastrado.",
-			"unauthorized": "Sessão inválida.",
-			"network": "Erro de conexão. Tente novamente.",
-			"unexpected": "Erro inesperado. Tente novamente."
-		}
-	}
+	"informationicon": "Informações sobre o aplicativo"
 }

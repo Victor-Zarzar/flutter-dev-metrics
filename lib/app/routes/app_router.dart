@@ -3,6 +3,7 @@ import 'package:dev_metrics/app/features/auth/data/presentation/pages/signin_pag
 import 'package:dev_metrics/app/features/auth/data/presentation/pages/signup_page.dart';
 import 'package:dev_metrics/app/features/dashboard/presentation/pages/dashboard_page.dart';
 import 'package:dev_metrics/app/features/home/presentation/pages/home_page.dart';
+import 'package:dev_metrics/app/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:dev_metrics/app/features/settings/presentation/pages/settings_page.dart';
 import 'package:dev_metrics/app/routes/app_routes.dart';
 import 'package:dev_metrics/app/routes/global_navigator.dart';
@@ -12,6 +13,11 @@ final GoRouter appRouter = GoRouter(
   navigatorKey: rootNavigatorKey,
   initialLocation: AppRoutes.home,
   routes: <RouteBase>[
+    GoRoute(
+      path: AppRoutes.onboarding,
+      name: 'onboarding',
+      builder: (context, state) => const OnboardingPage(),
+    ),
     GoRoute(
       path: AppRoutes.home,
       name: 'home',

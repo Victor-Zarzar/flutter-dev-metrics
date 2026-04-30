@@ -12,6 +12,7 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
     this.titleWidget,
     this.actions,
     this.centerTitle = true,
+    this.showBackButton = false,
     this.onPressed,
     this.isTransparent = false,
   });
@@ -21,6 +22,7 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
   final VoidCallback? onPressed;
   final bool? centerTitle;
+  final bool showBackButton;
   final bool isTransparent;
 
   @override

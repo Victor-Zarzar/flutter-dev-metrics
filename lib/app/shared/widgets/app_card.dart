@@ -1,9 +1,8 @@
 import 'package:dev_metrics/app/extensions/context_extension.dart';
 import 'package:dev_metrics/app/shared/theme/app_borders.dart';
+import 'package:dev_metrics/app/shared/theme/app_shadows.dart';
 import 'package:dev_metrics/app/shared/theme/app_spacing.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:fpdart/fpdart.dart' as AppShadows;
 
 class AppCard extends StatelessWidget {
   const AppCard({
