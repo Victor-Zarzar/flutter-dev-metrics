@@ -1,6 +1,7 @@
 import 'package:dev_metrics/app/features/auth/data/repositories/auth_repository.dart';
 import 'package:dev_metrics/app/routes/app_routes.dart';
 import 'package:dev_metrics/app/shared/helpers/show_toast.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
@@ -30,7 +31,11 @@ class AuthProvider extends ChangeNotifier {
     _setLoading(false);
     result.fold(
       (failure) {
-        showToast(context, message: failure.message, status: 'error');
+        final message = failure.message == 'auth.email_not_confirmed'
+            ? 'auth.email_not_confirmed'.tr()
+            : failure.message;
+
+        showToast(context, message: message, status: 'error');
       },
       (user) {
         if (context.mounted) {
@@ -60,8 +65,13 @@ class AuthProvider extends ChangeNotifier {
         showToast(context, message: failure.message, status: 'error');
       },
       (user) {
+        showToast(
+          context,
+          message: 'auth.verify_email'.tr(),
+          status: 'success',
+        );
         if (context.mounted) {
-          context.go(AppRoutes.home);
+          context.go(AppRoutes.signin);
         }
       },
     );
@@ -83,7 +93,7 @@ class AuthProvider extends ChangeNotifier {
       (success) {
         showToast(
           context,
-          message: 'Password reset link sent successfully',
+          message: 'auth.reset_password_sent'.tr(),
           status: 'success',
         );
         if (context.mounted) {

@@ -61,12 +61,9 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
       leadingWidth: 40.w,
       leading: GestureDetector(
         onTap: handleBack,
-        child: ColoredBox(
+        child: const ColoredBox(
           color: Colors.transparent,
-          child: const HugeIcon(
-            icon: HugeIcons.strokeRoundedArrowLeft01,
-            size: 24,
-          ),
+          child: HugeIcon(icon: HugeIcons.strokeRoundedArrowLeft01, size: 24),
         ),
       ),
       iconTheme: theme.appBarTheme.iconTheme,

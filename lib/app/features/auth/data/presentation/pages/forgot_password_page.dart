@@ -58,7 +58,6 @@ class ForgotPasswordPage extends StatelessWidget {
                   style: tt.bodyMedium?.copyWith(color: cs.onSurfaceVariant),
                 ),
                 SizedBox(height: AppSpacing.xxxl.h),
-                // Form Card
                 Form(
                   key: formKey,
                   child: Column(

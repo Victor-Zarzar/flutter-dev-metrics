@@ -35,7 +35,10 @@
 		"forgot_password_title": "Redefinir senha",
 		"forgot_password_subtitle": "Digite seu email e enviaremos um link para redefinir sua senha.",
 		"back_to_login": "Voltar para o login",
-		"send_reset_link": "Enviar link de redefinição"
+		"send_reset_link": "Enviar link de redefinição",
+		"verify_email": "Verifique seu e-mail para ativar sua conta",
+		"reset_password_sent": "Link de redefinição enviado com sucesso",
+		"email_not_confirmed": "Confirme seu e-mail antes de fazer login"
 	},
 	"app_bar_title": "Flutter Boilerplate",
 	"home": "Início",

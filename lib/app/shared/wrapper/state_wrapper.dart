@@ -2,6 +2,7 @@ import 'package:dev_metrics/app/features/auth/data/repositories/auth_repository_
 import 'package:dev_metrics/app/features/auth/providers/session_provider.dart';
 import 'package:dev_metrics/app/presentation/viewmodels/locale_viewmodel.dart';
 import 'package:dev_metrics/app/presentation/viewmodels/notification_viewmodel.dart';
+import 'package:dev_metrics/app/presentation/viewmodels/theme_viewmodel.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:dev_metrics/app/features/auth/providers/auth_provider.dart';
@@ -27,6 +28,7 @@ class StateWrapper extends StatelessWidget {
         ChangeNotifierProvider<LocaleViewModel>(
           create: (_) => LocaleViewModel(),
         ),
+        ChangeNotifierProvider(create: (_) => ThemeViewModel()..init()),
       ],
       child: child,
     );

@@ -43,7 +43,9 @@ class SettingsPage extends StatelessWidget {
               trailing: PopupMenuButton<Locale>(
                 initialValue: currentLocale,
                 color: colorScheme.surfaceContainerHighest,
-                shape: RoundedRectangleBorder(borderRadius: AppBorders.card),
+                shape: const RoundedRectangleBorder(
+                  borderRadius: AppBorders.card,
+                ),
                 icon: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -107,7 +109,7 @@ class SettingsPage extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (_) => const ThemePage()),
+                  MaterialPageRoute<void>(builder: (_) => const ThemePage()),
                 );
               },
             ),
@@ -119,7 +121,7 @@ class SettingsPage extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (_) => const AboutPage()),
+                  MaterialPageRoute<void>(builder: (_) => const AboutPage()),
                 );
               },
             ),

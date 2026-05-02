@@ -15,8 +15,15 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-class SigninPage extends StatelessWidget {
+class SigninPage extends StatefulWidget {
   const SigninPage({super.key});
+
+  @override
+  State<SigninPage> createState() => _SigninPageState();
+}
+
+class _SigninPageState extends State<SigninPage> {
+  bool isChecked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +98,7 @@ class SigninPage extends StatelessWidget {
                         obscureText: obscurePassword,
                         prefixIcon: const Icon(Icons.lock_outline),
                         suffixIcon: IconButton(
-                          icon: Icon(Icons.visibility),
+                          icon: const Icon(Icons.visibility),
                           onPressed: () {},
                         ),
                         validator: (v) {
@@ -115,8 +122,12 @@ class SigninPage extends StatelessWidget {
                                 width: 20.w,
                                 height: 20.h,
                                 child: Checkbox(
-                                  value: true,
-                                  onChanged: (value) {},
+                                  value: isChecked,
+                                  onChanged: (bool? value) {
+                                    setState(() {
+                                      isChecked = value!;
+                                    });
+                                  },
                                 ),
                               ),
                               Text(

@@ -35,7 +35,10 @@
 		"forgot_password_title": "Restablecer contraseña",
 		"forgot_password_subtitle": "Ingresa tu correo y te enviaremos un enlace para restablecerla.",
 		"back_to_login": "Volver al inicio de sesión",
-		"send_reset_link": "Enviar enlace"
+		"send_reset_link": "Enviar enlace",
+		"verify_email": "Verificar correo",
+		"reset_password_sent": "Enlace de restablecimiento enviado",
+		"email_not_confirmed": "Por favor, confirma tu correo electrónico antes de iniciar sesión"
 	},
 	"app_bar_title": "Flutter Boilerplate",
 	"home": "Inicio",

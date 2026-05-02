@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: colorScheme.surface,
-      appBar: AppTopBar(title: 'home'.tr()),
+      appBar: AppTopBar(title: 'home'.tr(), showBackButton: false),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: EdgeInsets.all(AppSpacing.xl.w),
@@ -58,7 +58,7 @@ class HomePage extends StatelessWidget {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
+                          MaterialPageRoute<void>(
                             builder: (_) => const DashboardPage(),
                           ),
                         );
@@ -73,7 +73,7 @@ class HomePage extends StatelessWidget {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
+                          MaterialPageRoute<void>(
                             builder: (_) => const SettingsPage(),
                           ),
                         );
