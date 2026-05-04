@@ -47,7 +47,7 @@
 
 ### Features & Integrations
 
-- **Multi-Platform Support** - Android, iOS, Web
+- **Multi-Platform Support** - Android & iOS
 - **FL Chart** - Rich, animated charts and graphs for metrics visualization
 - **PDF Export** - Generate and download metric reports as PDF
 - **Printing** - Print reports and dashboards directly from the app
@@ -56,7 +56,7 @@
 - **Dark Mode Provider** - Theme switching
 - **GoRouter** - Declarative routing with adaptive navigation (mobile/web)
 - **Flutter Local Notifications** - Push notifications
-- **Responsive Layout** - Adaptive UI for mobile and web
+- **Responsive Layout** - Adaptive UI
 - **Sentry Logs** - Error tracking and monitoring
 
 ---
@@ -146,20 +146,6 @@ make run-ios
 dart devtools
 ```
 
-#### Web (Google Chrome)
-
-```bash
-make run-chrome
-```
-
-#### Or Web Server default
-
-```bash
-make run-web-server
-```
-
-Access the application at `http://localhost:xxxx`
-
 ---
 
 <h2 id="development">Development</h2>
@@ -230,14 +216,6 @@ The generated files will be at:
 
 - IPA: `build/ios/ipa/`
 - Debug symbols: `build/debug-info/`
-
-### Web
-
-```bash
-make build-web-prod
-```
-
-The generated files will be at: `build/web/`
 
 ### Sentry Configuration
 
