@@ -7,6 +7,7 @@ import 'package:dev_metrics/app/features/onboarding/presentation/pages/onboardin
 import 'package:dev_metrics/app/features/settings/presentation/pages/settings_page.dart';
 import 'package:dev_metrics/app/routes/app_routes.dart';
 import 'package:dev_metrics/app/routes/global_navigator.dart';
+import 'package:dev_metrics/app/routes/main_shell.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter appRouter = GoRouter(
@@ -18,34 +19,53 @@ final GoRouter appRouter = GoRouter(
       name: 'onboarding',
       builder: (context, state) => const OnboardingPage(),
     ),
-    GoRoute(
-      path: AppRoutes.home,
-      name: 'home',
-      builder: (context, state) => const HomePage(),
-    ),
-    GoRoute(
-      path: AppRoutes.dashboard,
-      name: 'dashboard',
-      builder: (context, state) => const DashboardPage(),
-    ),
-    GoRoute(
-      path: AppRoutes.settings,
-      name: 'settings',
-      builder: (context, state) => const SettingsPage(),
+    StatefulShellRoute.indexedStack(
+      builder: (context, state, navigationShell) {
+        return MainRouteShell(navigationShell: navigationShell);
+      },
+      branches: [
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: AppRoutes.home,
+              name: AppRouteNames.home,
+              builder: (context, state) => const HomePage(),
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: AppRoutes.dashboard,
+              name: AppRouteNames.dashboard,
+              builder: (context, state) => const DashboardPage(),
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: AppRoutes.settings,
+              name: AppRouteNames.settings,
+              builder: (context, state) => const SettingsPage(),
+            ),
+          ],
+        ),
+      ],
     ),
     GoRoute(
       path: AppRoutes.signup,
-      name: 'signup',
+      name: AppRouteNames.signup,
       builder: (context, state) => const SignupPage(),
     ),
     GoRoute(
       path: AppRoutes.signin,
-      name: 'signin',
+      name: AppRouteNames.signin,
       builder: (context, state) => const SigninPage(),
     ),
     GoRoute(
       path: AppRoutes.forgotPassword,
-      name: 'forgotPassword',
+      name: AppRouteNames.forgotPassword,
       builder: (context, state) => const ForgotPasswordPage(),
     ),
   ],

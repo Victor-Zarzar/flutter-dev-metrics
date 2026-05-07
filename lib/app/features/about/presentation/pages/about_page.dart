@@ -25,7 +25,7 @@ class AboutPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: colorScheme.surface,
-      appBar: AppTopBar(title: 'about'.tr()),
+      appBar: AppTopBar(title: 'about'.tr(), showBackButton: true),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(AppSpacing.xl.w),

@@ -9,7 +9,6 @@ Color _colorFromHex(String hex) {
   return Color(int.parse('ff$cleaned', radix: 16));
 }
 
-/// Custom theme extension for spacing and other design tokens
 class AppDesignTokens extends ThemeExtension<AppDesignTokens> {
   const AppDesignTokens({
     required this.paddingSmall,

@@ -4,14 +4,12 @@ import 'package:dev_metrics/app/shared/utils/task_runner.dart';
 import 'package:dev_metrics/app/shared/utils/typedefs.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 
-/// A service to retrieve detailed information about the current device.
 class DeviceInfoService {
   DeviceInfoService._();
   static final DeviceInfoService instance = DeviceInfoService._();
 
   final DeviceInfoPlugin _deviceInfo = DeviceInfoPlugin();
 
-  /// Retrieve full device information as a Map.
   FutureEither<Map<String, dynamic>> getFullDeviceInfo() async {
     return runTask(() async {
       if (Platform.isAndroid) {

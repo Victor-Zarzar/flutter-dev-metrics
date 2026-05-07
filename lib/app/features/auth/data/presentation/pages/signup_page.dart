@@ -105,7 +105,7 @@ class SignupPage extends StatelessWidget {
                         obscureText: obscurePassword,
                         prefixIcon: const Icon(Icons.lock_outline),
                         suffixIcon: IconButton(
-                          icon: Icon(Icons.visibility),
+                          icon: const Icon(Icons.visibility),
                           onPressed: () {},
                         ),
                         validator: (v) {
@@ -126,7 +126,7 @@ class SignupPage extends StatelessWidget {
                         obscureText: obscureConfirmPassword,
                         prefixIcon: const Icon(Icons.lock_outline),
                         suffixIcon: IconButton(
-                          icon: Icon(Icons.visibility),
+                          icon: const Icon(Icons.visibility),
                           onPressed: () {},
                         ),
                         validator: (v) {

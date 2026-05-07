@@ -35,7 +35,10 @@
 		"forgot_password_title": "Reset your password",
 		"forgot_password_subtitle": "Enter your email and we’ll send you a reset link.",
 		"back_to_login": "Back to login",
-		"send_reset_link": "Send reset link"
+		"send_reset_link": "Send reset link",
+		"verify_email": "Check your email to activate your account",
+		"reset_password_sent": "Password reset link sent successfully",
+		"email_not_confirmed": "Please confirm your email before logging in"
 	},
 	"app_bar_title": "Flutter Boilerplate",
 	"home": "Home",

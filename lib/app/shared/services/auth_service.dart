@@ -34,6 +34,9 @@ class AuthService {
       );
       final user = response.user;
       if (user == null) return null;
+      if (user.emailConfirmedAt == null) {
+        throw Exception('auth.email_not_confirmed');
+      }
       return {
         'id': user.id,
         'email': user.email,
@@ -53,6 +56,7 @@ class AuthService {
         email: email,
         password: password,
         data: {'name': name},
+        emailRedirectTo: 'devmetrics://auth/callback',
       );
       final user = response.user;
       if (user == null) return null;
@@ -67,7 +71,10 @@ class AuthService {
 
   FutureEither<void> forgotPassword({required String email}) async {
     return runTask(() async {
-      await _supabaseClient.auth.resetPasswordForEmail(email);
+      await _supabaseClient.auth.resetPasswordForEmail(
+        email,
+        redirectTo: 'devmetrics://auth/callback',
+      );
     }, requiresNetwork: true);
   }
 
