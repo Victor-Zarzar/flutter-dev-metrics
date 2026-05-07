@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0](https://github.com/Victor-Zarzar/flutter-dev-metrics/compare/v1.1.0...v1.2.0) (2026-05-07)
+
+
+### Features
+
+* add Main Router Shell. ([88f2cf2](https://github.com/Victor-Zarzar/flutter-dev-metrics/commit/88f2cf26e61628675163f11325703f38fa794d1c))
+* add theme viewodel and new rules linter ([179cee5](https://github.com/Victor-Zarzar/flutter-dev-metrics/commit/179cee556568bcaa7b29ab1cdb614fad3a3a601b))
+
 ## [1.1.0](https://github.com/Victor-Zarzar/flutter-dev-metrics/compare/v1.0.0...v1.1.0) (2026-04-30)
 
 
