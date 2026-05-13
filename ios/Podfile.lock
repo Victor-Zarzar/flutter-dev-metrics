@@ -3,8 +3,6 @@ PODS:
     - Flutter
   - app_settings (6.1.2):
     - Flutter
-  - connectivity_plus (0.0.1):
-    - Flutter
   - device_info_plus (0.0.1):
     - Flutter
   - Flutter (1.0.0)
@@ -21,11 +19,11 @@ PODS:
     - Flutter
   - printing (1.0.0):
     - Flutter
-  - Sentry/HybridSDK (8.58.1)
-  - sentry_flutter (9.19.0):
+  - Sentry/HybridSDK (8.58.2)
+  - sentry_flutter (9.20.0):
     - Flutter
     - FlutterMacOS
-    - Sentry/HybridSDK (= 8.58.1)
+    - Sentry/HybridSDK (= 8.58.2)
   - shared_preferences_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -38,7 +36,6 @@ PODS:
 DEPENDENCIES:
   - app_links (from `.symlinks/plugins/app_links/ios`)
   - app_settings (from `.symlinks/plugins/app_settings/ios`)
-  - connectivity_plus (from `.symlinks/plugins/connectivity_plus/ios`)
   - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
   - Flutter (from `Flutter`)
   - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
@@ -61,8 +58,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/app_links/ios"
   app_settings:
     :path: ".symlinks/plugins/app_settings/ios"
-  connectivity_plus:
-    :path: ".symlinks/plugins/connectivity_plus/ios"
   device_info_plus:
     :path: ".symlinks/plugins/device_info_plus/ios"
   Flutter:
@@ -91,7 +86,6 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   app_links: a754cbec3c255bd4bbb4d236ecc06f28cd9a7ce8
   app_settings: 0341ec6daa4f0c50f5a421bf0ad7c36084db6e90
-  connectivity_plus: cb623214f4e1f6ef8fe7403d580fdad517d2f7dd
   device_info_plus: 21fcca2080fbcd348be798aa36c3e5ed849eefbe
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
   flutter_local_notifications: 643a3eda1ce1c0599413ca31672536d423dee214
@@ -100,12 +94,12 @@ SPEC CHECKSUMS:
   package_info_plus: af8e2ca6888548050f16fa2f1938db7b5a5df499
   permission_handler_apple: 4ed2196e43d0651e8ff7ca3483a069d469701f2d
   printing: 54ff03f28fe9ba3aa93358afb80a8595a071dd07
-  Sentry: 958d9619ceccf6abb8c4736003fa336dac1a80a7
-  sentry_flutter: bdfd7a7b8931c4ecefa37fde9e44a15cd0af30b1
+  Sentry: de29b881e83bd91cf99a927f82f1fd86bfb39db2
+  sentry_flutter: cbb414ef141b64f901bc1ba32daa871349510ce4
   shared_preferences_foundation: 7036424c3d8ec98dfe75ff1667cb0cd531ec82bb
   sqflite_darwin: 20b2a3a3b70e43edae938624ce550a3cbf66a3d0
   url_launcher_ios: 7a95fa5b60cc718a708b8f2966718e93db0cef1b
 
-PODFILE CHECKSUM: 3c63482e143d1b91d2d2560aee9fb04ecc74ac7e
+PODFILE CHECKSUM: ae9e65fc23486119b8e977fd41d9213f251e537a
 
 COCOAPODS: 1.16.2
